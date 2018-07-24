@@ -4,7 +4,7 @@
       <section class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide" v-for="(focus, index) in focusLists" :key="index">
-            <img v-lazy="focus.picUrl">
+            <img :src="focus.picUrl">
           </div>
         </div>
         <div class="swiper-pagination"></div>
@@ -228,10 +228,11 @@
 
           let time = this.flashSaleIndexVO.remainTime
           this.timer = setInterval(() => {
-            this.time = moment.duration(time)
+            time-=1000
             if (time <= 0){
               clearInterval(this.timer)
             }
+            this.time = moment.duration(time)
           },1000)
 
         })
